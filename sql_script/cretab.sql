@@ -28,7 +28,9 @@
 	USERNAME VARCHAR2(20) NOT NULL ,                                       
 	USER_ID CHAR(10) ,
 	EMAIL VARCHAR2(30),
-	 PRIMARY KEY (USER_ID)                                
+	 PRIMARY KEY (USER_ID),                                
+	 FOREIGN KEY (USER_ID)
+	 REFERENCES CUSTOMERS (USER_ID) ON DELETE CASCADE
    );                                                  
                                                                                 
 
