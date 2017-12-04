@@ -34,8 +34,7 @@
 		'input_first_name',
 		 'input_middle_name',
 		'input_last_name',
-		'phone_number',
-		'date_of_birth',
+		'phone_number' 
 		);
 ```
 	
