@@ -17,14 +17,14 @@
     <div class="header">
         <nav>
             <ul class="nav nav-pills pull-right">
-                <li role="presentation" ><a href="main">Home</a></li>
+                <li role="presentation" ><a href="/main">Home</a></li>
             </ul>
         </nav>
         <h1 class="text-muted">Product information</h1>
     </div>
 
     <div class="jumbotron">
-        <form class="form-signin" action="" method="post">
+        <form class="form-signin" action="/employee/product/update" method="post">
             <label for="inputproductID" class="sr-only">Product ID</label>
             <input type="number" name="inputproductID" id="inputproductID" class="form-control" placeholder="Product ID" required autofocus>
             <label for="inputproductCode" class="sr-only">UPC code</label>
@@ -39,9 +39,9 @@
             <input type="text" name="inputCA" id="inputCA" class="form-control" placeholder="Product Capacity" required>
             <label for="inputdate" class="sr-only">Expiration Date</label>
             <input type="date" name="inputdate" id="inputdate" class="form-control" placeholder="Expiration Date" required>
-            <a href="employee/product/update" class="btn btn-lg btn-primary btn-block">Update</a>
+            <input type="submit" value="Submit" href="/main" class="btn btn-lg btn-primary btn-block">
+       	    <a href="/main" class="btn btn-lg btn-primary btn-block">Cancel</a>
         </form>
-        <a href="main" class="btn btn-lg btn-primary btn-block">Cancel</a>
     </div>
 
 
