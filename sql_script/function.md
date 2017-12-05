@@ -22,7 +22,7 @@
 ### Sign up
 ```sql
 	--auto generate auto_user_id;
-	--input infromation;
+	--input information;
 	
 	--examine the same username
 	select username from account
@@ -40,7 +40,7 @@
 	
 
 
-### Edit infromation
+### Edit information
 ```sql
 	update table customers
 	set first_name = 'input_first_name',
@@ -170,7 +170,7 @@
 	select user_id from cart 
 	where user_id = 'current userid';
 	
-	--get cart infromation
+	--get cart information
 	select tax from cart 
 	where user_id = 'current userid';
 	
@@ -180,7 +180,7 @@
 	select shipping_price from cart 
 	where user_id = 'current userid';
 
-	--get product infromation
+	--get product information
 	select * from product natural join 
 		(select product_id from cartdetail 
 		where user_id = 'current userid');
