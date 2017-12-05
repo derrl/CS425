@@ -7,12 +7,12 @@
 	--input username
 	--input password
 
-	select user_id form account
+	select user_id from account
 		where username = 'input_username' 
 		and password = 'input_password';
 
 --login use email
-	select user_id form account
+	select user_id from account
 		where email = 'input_email' 
 		and password = 'input_password';
 
@@ -22,10 +22,10 @@
 ### Sign up
 ```sql
 	--auto generate auto_user_id;
-	--input information;
+	--input infromation;
 	
 	--examine the same username
-	select username form account
+	select username from account
 		where username = 'input username';
 
 	--if username is unique, then create a new account.
@@ -40,7 +40,7 @@
 	
 
 
-### Edit information
+### Edit infromation
 ```sql
 	update table customers
 	set first_name = 'input_first_name',
@@ -149,7 +149,7 @@
 	where user_id = 'current_user_id';
 ```
 
-### Delete form cart
+### Delete from cart
 ```sql
 	delete from cartdetail
 	where user_id = 'current_user_id'
@@ -170,24 +170,20 @@
 	select user_id from cart 
 	where user_id = 'current userid';
 	
-	--get cart information
-	select tax form cart 
+	--get cart infromation
+	select tax from cart 
 	where user_id = 'current userid';
 	
-	select price form cart 
+	select price from cart 
 	where user_id = 'current userid';
 
-	select shipping_price form cart 
+	select shipping_price from cart 
 	where user_id = 'current userid';
 
-	--get product information
-	with current_cart as(
-		select product_id form cartdetail
-		where user_id = 'current userid'
-	)
-	select * 
-	from product 
-	where product_id in current_cart;
+	--get product infromation
+	select * from product natural join 
+		(select product_id from cartdetail 
+		where user_id = 'current userid');
 ```
 
 ### Place order (checkout cart)
@@ -250,7 +246,7 @@
 
 ### Check product
 ```sql
-	select * form product;
+	select * from product;
 ```
 
 
