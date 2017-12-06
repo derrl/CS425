@@ -204,14 +204,11 @@
             where user_id = 'current userid'),
             'current userid',
             0);
-
-    -- get product_id,product_number form cartdetail, and save it in an array
-    select product_id, product_number
+  
+    insert into orderdetail (order_id, product_id, product_number
+    select 'auto_order_id', product_id, product_number
     from cartdetail
-    where user_id = 'current userid';
-
-    --get information from array we saved before, insert data using a loop.
-    insert into orderdeatil ('this_order_id', product_id, product_number)
+    where user_id = 'current_user_id';
 
     delete from cartdetail
     where user_id = 'current userid';
