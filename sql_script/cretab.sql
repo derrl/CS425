@@ -5,7 +5,7 @@
 	MIDDLE_NAME VARCHAR2(20),
 	LAST_NAME VARCHAR2(20) NOT NULL ,
 	PHONE_NUMBER VARCHAR2(20),
---	DATE_OF_BIRTH DATE,
+	DATE_OF_BIRTH DATE,
 	 PRIMARY KEY (USER_ID)                                            
    );
                                                                                 
