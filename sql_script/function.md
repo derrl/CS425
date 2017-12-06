@@ -211,7 +211,7 @@
     where user_id = 'current userid';
 
     --get information from array we saved before, insert data using a loop.
-    insert into orderdeatil (order_id, product_id, product_number)
+    insert into orderdeatil ('this_order_id', product_id, product_number)
 
     delete from cartdetail
     where user_id = 'current userid';
