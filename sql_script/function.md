@@ -101,6 +101,12 @@
 	where user_id = 'the current userid';
 ```
 
+### Check order detail
+```sql
+	select * form orderdetail
+	where order_id = 'this order id';
+```
+
 ### Add to cart
 ```sql
 	insert into cartdetail 
@@ -269,6 +275,11 @@
 	values ('store_id',
 		'product_id',
 		'number of product in this store');
+	
+	--set product description
+	insert into product_description
+	values ('product_id',
+		'description')
 
 	--set product type
 	insert into productbelongto
@@ -279,6 +290,20 @@
 	insert into brandbelongto
 	values ('product_id',
 		'barnd_name');
+```
+
+### Update product
+```sql
+	update product 
+	set product_name = 'product name',
+	    product_price = 'product price',
+	    expiration_date = 'expiration date',
+	    UPC_code = 'upc code'
+	where product_id = 'target_product_id';
+	
+	update prodcut_description
+	set description = 'product description'
+	where product_id = 'target_product_id';
 ```
 	
 ### Delete product

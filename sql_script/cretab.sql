@@ -20,7 +20,7 @@
 	 PRIMARY KEY (ORDER_ID) ,
 	 FOREIGN KEY (USER_ID)
 	 REFERENCES CUSTOMERS (USER_ID) ON DELETE CASCADE,
-	CHECK(PAYMENT_STATUS IN (0,1)
+	 CHECK(PAYMENT_STATUS IN (0,1))
    );
 -- status 0 means unpaid, 1 means paid.
                                                                                 
@@ -54,7 +54,14 @@
 	UPC_CODE VARCHAR2(20),
 	 PRIMARY KEY (PRODUCT_ID)
    );
-
+	
+  CREATE TABLE PRODUCT_DESCRIPTION
+   ( 	PRODUCT_ID CHAR(10),
+	DESCRIPTION VARCHAR2(200),
+	 PRIMARY KEY (PRODUCT_ID),
+	 FOREIGN KEY (PRODUCT_ID)        
+	 REFERENCES PRODUCT (PRODUCT_ID) ON DELETE CASCADE
+   );
 
   CREATE TABLE ORDERDETAIL                                          
    (	ORDER_ID CHAR(10),
@@ -86,7 +93,7 @@
 
   CREATE TABLE PRODUCT_TYPE                                         
    (	CATEGORY_NAME VARCHAR2(20),
-	DESCRIPTION VARCHAR2(20),
+	DESCRIPTION VARCHAR2(200),
 	 PRIMARY KEY (CATEGORY_NAME)                       
    );                                                  
                                                                                 
@@ -107,7 +114,7 @@
                                                                                 
   CREATE TABLE BRAND                                                
    (	BRAND_NAME VARCHAR2(20),
-	BRAND_DESCRIPTION VARCHAR2(20),
+	BRAND_DESCRIPTION VARCHAR2(200),
 	BRAND_COMPANY VARCHAR2(20),
 	 PRIMARY KEY (BRAND_NAME)                                 
    );                                                  
@@ -134,7 +141,7 @@
 	PHONE_NUMBER VARCHAR2(20),
 	OPEN_TIME VARCHAR2(20),
 	CLOSE_TIME VARCHAR2(20),
-	DESCRIPTION VARCHAR2(20),
+	DESCRIPTION VARCHAR2(200),
 	 PRIMARY KEY (STORE_ID)                                   
    );                                                  
                                                                                 
