@@ -113,7 +113,9 @@
 		price = shipping_price + (select sum(product_price * product_number)
 			from product natural join cartdetail
 			where user_id = 'current_user_id'),
-		tax = price * 1.05
+        tax = 0.05*(select sum(product_price * product_number)
+            from product natural join cartdetail
+            where user_id = 'current userid')
 	where user_id = 'current_user_id';
 ```
 
@@ -129,7 +131,9 @@
 		price = shipping_price + (select sum(product_price * product_number)
 			from product natural join cartdetail
 			where user_id = 'current_user_id'),
-		tax = price * 1.05
+        tax = 0.05*(select sum(product_price * product_number)
+            from product natural join cartdetail
+            where user_id = 'current userid')
 	where user_id = 'current_user_id';
 ```
 
@@ -145,7 +149,9 @@
 		price = shipping_price + (select sum(product_price * product_number)
 			from product natural join cartdetail
 			where user_id = 'current_user_id'),
-		tax = price * 1.05
+        tax = 0.05*(select sum(product_price * product_number)
+            from product natural join cartdetail
+            where user_id = 'current userid')
 	where user_id = 'current_user_id';
 ```
 
@@ -160,7 +166,9 @@
 		price = shipping_price + (select sum(product_price * product_number)
 			from product natural join cartdetail
 			where user_id = 'current_user_id'),
-		tax = price * 1.05
+        tax = 0.05*(select sum(product_price * product_number)
+            from product natural join cartdetail
+            where user_id = 'current userid')
 	where user_id = 'current_user_id';
 ```
 
@@ -189,34 +197,34 @@
 ### Place order (checkout cart)
 ```sql
 	--auto generate auto_order_id;
+    insert into orders
+    values ('auto_order_id',
+            current_date,
+            (select price from cart
+            where user_id = 'current userid'),
+            'current userid',
+            0);
 
-	with totalprice as(
-		select price from cart
-		where user_id = 'current userid'
-	) 
-	insert into orders 
-	values ('auto_order_id',
-			current_date,
-			totalprice,
-			'current userid',
-			0);
+    -- get product_id,product_number form cartdetail, and save it in an array
+    select product_id, product_number
+    from cartdetail
+    where user_id = 'current userid';
 
-	insert into orderdeatil (order_id, product_id, product_number)
-	select 'auto_order_id', product_id, product_number 
-	from cartdetail
-	where user_id = 'current_user_id';
+    --get information from array we saved before, insert data using a loop.
+    insert into orderdeatil (order_id, product_id, product_number)
 
-	delete from cartdetail
-	where user_id = 'current_user_id';
+    delete from cartdetail
+    where user_id = 'current userid';
 
-	update cart
-	set	shipping_price = 5,
-		price = shipping_price + (select sum(product_price * product_number)
-			from product natural join cartdetail
-			where user_id = 'current_user_id'),
-		tax = price * 1.05
-	where user_id = 'current_user_id';
-
+    update cart
+    set shipping_price = 5,
+        price = shipping_price + (select sum(product_price * product_number)
+            from product natural join cartdetail
+            where user_id = 'current userid'),
+        tax = 0.05*(select sum(product_price * product_number)
+            from product natural join cartdetail
+            where user_id = 'current userid')
+    where user_id = 'current userid';
 ```
 
 ### Make payment order
