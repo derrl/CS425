@@ -24,10 +24,31 @@ insert into product values('p111111115','Superman model',29.99,DATE '2020-12-31'
 
 insert into CARTDETAIL values('u000000002','p111111111',2);
 insert into CARTDETAIL values('u000000002','p111111115',1);
+
+	update cart
+	set	shipping_price = 5,
+		price = shipping_price + (select sum(product_price * product_number)
+			from product natural join cartdetail
+			where user_id = 'u000000002'),
+        tax = 0.05*(select sum(product_price * product_number)
+            from product natural join cartdetail
+            where user_id = 'u000000002')
+	where user_id = 'u000000002';
+
 insert into CARTDETAIL values('u000000003','p111111114',3);
 insert into CARTDETAIL values('u000000003','p111111112',3);
 insert into CARTDETAIL values('u000000003','p111111113',1);
 insert into CARTDETAIL values('u000000003','p111111111',2);
+
+	update cart
+	set	shipping_price = 5,
+		price = shipping_price + (select sum(product_price * product_number)
+			from product natural join cartdetail
+			where user_id = 'u000000003'),
+        tax = 0.05*(select sum(product_price * product_number)
+            from product natural join cartdetail
+            where user_id = 'u000000003')
+	where user_id = 'u000000003';
 
 insert into ORDERS values('o000000001',DATE '2020-12-31',113.00,'u000000001',1);
 insert into ORDERS values('o000000002',DATE '2020-12-31',33.00,'u000000001',1);
