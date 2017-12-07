@@ -1,18 +1,17 @@
 
   CREATE TABLE CUSTOMERS                                            
-   (	USER_ID CHAR(10) NOT NULL ,                                             
-	FIRST_NAME VARCHAR2(20) NOT NULL ,                                     
+   (	USER_ID CHAR(10) NOT NULL ,
+	FIRST_NAME VARCHAR2(20) NOT NULL ,
 	MIDDLE_NAME VARCHAR2(20),
 	LAST_NAME VARCHAR2(20) NOT NULL ,
 	PHONE_NUMBER VARCHAR2(20),
-	DATE_OF_BIRTH DATE,
-	 PRIMARY KEY (USER_ID)                                            
+	 PRIMARY KEY (USER_ID)
    );
                                                                                 
                                                                                 
                                                                                 
   CREATE TABLE ORDERS                                               
-   (	ORDER_ID CHAR(10) NOT NULL ,                                       
+   (	ORDER_ID CHAR(10) NOT NULL ,
 	ORDER_DATE VARCHAR2(20) NOT NULL ,
 	TOTAL_PRICE NUMERIC(10,2),
    	USER_ID CHAR(10) NOT NULL,
@@ -26,8 +25,8 @@
                                                                                 
 
   CREATE TABLE ACCOUNT                                              
-   (	PASSWORD VARCHAR2(20) NOT NULL ,                                   
-	USERNAME VARCHAR2(20) NOT NULL ,                                       
+   (	PASSWORD VARCHAR2(20) NOT NULL ,
+	USERNAME VARCHAR2(20) NOT NULL ,
 	USER_ID CHAR(10) ,
 	EMAIL VARCHAR2(30),
 	 PRIMARY KEY (USER_ID),                                
@@ -179,7 +178,7 @@
 	USER_ID CHAR(10),
 	 PRIMARY KEY (USER_ID) ,
 	 FOREIGN KEY (USER_ID)                    
-	  REFERENCES CUSTOMERS (USER_ID) ON DELETE CASCADE                                
+	  REFERENCES CUSTOMERS (USER_ID) ON DELETE CASCADE
    );                                                  
                                                                                 
 

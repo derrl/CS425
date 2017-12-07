@@ -52,7 +52,7 @@
 ```
 	
 
-### Set address
+### Add address
 ```sql
 	--auto generate auto_address_id;
 	
@@ -66,6 +66,16 @@
 		'current_user_id');
 ```
 	
+### Update address
+```sql
+	update address
+	set address_line_1 = 'address_line_1',
+	    address_line_2 = 'address_line_2',
+		city = 'city',
+		zipcode = 'zipcode',
+		state = 'state'		 
+	where address_id = 'current_address_id';
+```
 
 ### Delete address
 
@@ -341,6 +351,18 @@
 	insert into vendors
 	values ('store_id',
 		'vendor_name');
+```
+
+### Update store information
+```sql
+	update store 
+	set	store_name = 'store name',
+		store_address = 'address',
+		phone_number = 'phone number',
+		open_time = 'open time',
+		close_time = 'close time',
+		description = 'store description'
+	where store_id = 'current_storeid'
 ```
 
 ### Delete store
